@@ -1,3 +1,4 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/widget/CharacterButton.dart';
@@ -10,6 +11,7 @@ class Arabic extends StatefulWidget {
 class _ArabicState extends State<Arabic> {
   List characters = [
     new Character("A", "A for apple", () {
+     // playLocal();
       print("A press");
     }),
     new Character("B", "B for ball", () {
@@ -35,9 +37,23 @@ class _ArabicState extends State<Arabic> {
     }),
   ];
 
+
+  playLocal()  {
+    final assetsAudioPlayer = AssetsAudioPlayer();
+
+    assetsAudioPlayer.open(
+      "asset/arabic-sound/0.mp3",
+    );
+    assetsAudioPlayer.playOrPause();
+
+
+
+  }
+
   Column heading() {
     List<Widget> list = new List();
     list.add(SizedBox(height: 20));
+    list.add(Image.asset('asset/images/mosque.jpeg'));
     list.add(
       Center(
         child: Text(
@@ -68,6 +84,7 @@ class _ArabicState extends State<Arabic> {
                     children: <Widget>[
                       CharacterButton(characters[i].character, "Alif", () {
                         print("Arabic press");
+                        playLocal();
                       }),
                       SizedBox(width: 35),
                       if ((i + 1) < characters.length)
