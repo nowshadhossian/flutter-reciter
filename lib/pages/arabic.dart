@@ -1,4 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/widget/CharacterButton.dart';
@@ -10,44 +11,39 @@ class Arabic extends StatefulWidget {
 
 class _ArabicState extends State<Arabic> {
   List characters = [
-    new Character("A", "A for apple", () {
-     // playLocal();
-      print("A press");
-    }),
-    new Character("B", "B for ball", () {
-      print("B press");
-    }),
-    new Character("C", "B for ball", () {
-      print("B press");
-    }),
-    new Character("D", "B for ball", () {
-      print("B press");
-    }),
-    new Character("E", "B for ball", () {
-      print("B press");
-    }),
-    new Character("F", "B for ball", () {
-      print("B press");
-    }),
-    new Character("G", "B for ball", () {
-      print("B press");
-    }),
-    new Character("H", "B for ball", () {
-      print("B press");
-    }),
+    new Character("أ", "alif"),
+    new Character("ب", "ba"),
+    new Character("ت", "ta"),
+    new Character("ث", "tha"),
+    new Character("ج", "jiim"),
+    new Character("ح", "hha"),
+    new Character("خ", "kha"),
+    new Character("د", "daal"),
+    new Character("ذ", "thaal"),
+    new Character("ذ", "ra"),
+    new Character("ر", "zay"),
+    new Character("ز", "siin"),
+    new Character("ط", "shiin"),
+    new Character("ظ", "saad"),
+    new Character("ك", "taa"),
+    new Character("ل", "thaa"),
+    new Character("م", "ayn"),
+    new Character("ن", "ghayn"),
+    new Character("ص", "fa"),
+    new Character("ض", "qaf"),
+    new Character("ع", "kaf"),
+    new Character("غ", "lam"),
+    new Character("ف", "miim"),
+    new Character("ق", "nuun"),
+    new Character("س", "ha"),
+    new Character("ش", "waw"),
+    new Character("ه", "ya"),
   ];
 
-
-  playLocal()  {
+  playLocal(fileName)  {
     final assetsAudioPlayer = AssetsAudioPlayer();
-
-    assetsAudioPlayer.open(
-      "asset/arabic-sound/0.mp3",
-    );
+    assetsAudioPlayer.open("asset/arabicsound/" + fileName);
     assetsAudioPlayer.playOrPause();
-
-
-
   }
 
   Column heading() {
@@ -82,14 +78,13 @@ class _ArabicState extends State<Arabic> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CharacterButton(characters[i].character, "Alif", () {
-                        print("Arabic press");
-                        playLocal();
+                      CharacterButton(characters[i].character, characters[i].description, () {
+                        playLocal(i.toString() + ".mp3");
                       }),
                       SizedBox(width: 35),
                       if ((i + 1) < characters.length)
-                        CharacterButton(characters[i + 1].character, "Ba", () {
-                          print("Bangla press");
+                        CharacterButton(characters[i + 1].character, characters[i].description, () {
+                          playLocal((i+1).toString() + ".mp3");
                         }),
                     ],
                   ),
