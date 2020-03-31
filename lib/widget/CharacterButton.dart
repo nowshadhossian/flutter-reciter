@@ -17,7 +17,7 @@ class CharacterButton extends StatelessWidget {
           color: Colors.red[400],
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(18.0),
-              side: BorderSide(color: Colors.black)
+              side: BorderSide(width: 3, color: Colors.black)
           ),
           icon: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

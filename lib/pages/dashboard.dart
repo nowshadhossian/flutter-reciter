@@ -11,38 +11,49 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dashboard"),
+        backgroundColor: Colors.red,
+        title: Text("Dashboard", style: TextStyle(fontSize: 24),),
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 90),
-          Center(
-            child: Text(
-              "Chose One:",
-              style: TextStyle(fontSize: 24),
+      body: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          image: DecorationImage(
+            image: AssetImage("asset/images/tower.jpg"), // <-- BACKGROUND IMAGE
+            alignment: Alignment.topRight,
+
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 90),
+            Center(
+              child: Text(
+                "Choose One:",
+                style: TextStyle(fontSize: 39, color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CharacterButton("٣", "Arabic", () {
-                print("Arabic press");
-                Navigator.pushNamed(context, "/arabic");
-              }),
-              SizedBox(width: 35),
-              CharacterButton("আ", "Bangla", () {
-                print("Bangla press");
-                Navigator.pushNamed(context, "/bangla");
-              }),
-            ],
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Update Text',
-        child: Icon(Icons.update),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CharacterButton("٣", "Arabic", () {
+                  print("Arabic press");
+                  Navigator.pushNamed(context, "/arabic");
+                }),
+                SizedBox(width: 35),
+                CharacterButton("আ", "Bangla", () {
+                  print("Bangla press");
+                  Navigator.pushNamed(context, "/bangla");
+                }),
+              ],
+            ),
+            SizedBox(height: 20),
+            CharacterButton("A", "English", () {
+              print("Bangla press");
+              Navigator.pushNamed(context, "/bangla");
+            }),
+          ],
+        ),
       ),
     );
   }
