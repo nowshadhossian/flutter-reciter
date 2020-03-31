@@ -52,13 +52,20 @@ class _ArabicState extends State<Arabic> {
     list.add(SizedBox(height: 20));
     list.add(Image.asset('asset/images/mosque2.png'));
     list.add(
-      Center(
-        child: Text(
-          "Arabic Characters:",
-          style: TextStyle(
-              fontSize: 44,
-              fontWeight: FontWeight.bold,
-              color: Colors.red),
+      Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.red, width: 3),
+          //borderRadius: BorderRadius.circular(55.0),
+          color: Colors.red[100]
+        ),
+        child: Center(
+          child: Text(
+            "Arabic Characters:",
+            style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.bold,
+                color: Colors.red),
+          ),
         ),
       ),
     );
