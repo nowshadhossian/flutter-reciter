@@ -1,6 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/widget/CharacterButton.dart';
 
@@ -49,12 +50,15 @@ class _ArabicState extends State<Arabic> {
   Column heading() {
     List<Widget> list = new List();
     list.add(SizedBox(height: 20));
-    list.add(Image.asset('asset/images/mosque.jpeg'));
+    list.add(Image.asset('asset/images/mosque2.png'));
     list.add(
       Center(
         child: Text(
           "Arabic Characters:",
-          style: TextStyle(fontSize: 24),
+          style: TextStyle(
+              fontSize: 44,
+              fontWeight: FontWeight.bold,
+              color: Colors.red),
         ),
       ),
     );
@@ -67,31 +71,42 @@ class _ArabicState extends State<Arabic> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Arabic"),
+          backgroundColor: Colors.red,
         ),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(children: <Widget>[
-            heading(),
-            for (int i = 0; i < characters.length; i = i + 2)
-              Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CharacterButton(characters[i].character, characters[i].description, () {
-                        playLocal(i.toString() + ".mp3");
-                      }),
-                      SizedBox(width: 35),
-                      if ((i + 1) < characters.length)
-                        CharacterButton(characters[i + 1].character, characters[i].description, () {
-                          playLocal((i+1).toString() + ".mp3");
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.red[200], Colors.white],
+                stops: [0.1, 0.7],
+                begin: Alignment.bottomCenter,
+                end: Alignment.center
+              ),
+          ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(children: <Widget>[
+              heading(),
+              for (int i = 0; i < characters.length; i = i + 2)
+                Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        CharacterButton(characters[i].character, characters[i].description, () {
+                          playLocal(i.toString() + ".mp3");
                         }),
-                    ],
-                  ),
-                  SizedBox(height: 40),
-                ],
-              )
-          ]),
+                        SizedBox(width: 35),
+                        if ((i + 1) < characters.length)
+                          CharacterButton(characters[i + 1].character, characters[i+1].description, () {
+                            playLocal((i+1).toString() + ".mp3");
+                          }),
+                      ],
+                    ),
+                    SizedBox(height: 40),
+                  ],
+                )
+            ]),
+          ),
         ));
   }
 }
