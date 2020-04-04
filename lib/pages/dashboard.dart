@@ -50,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(height: 20),
             CharacterButton("A", "English", () {
               print("Bangla press");
-              Navigator.pushNamed(context, "/bangla");
+              Navigator.pushNamed(context, "/english");
             }),
           ],
         ),
