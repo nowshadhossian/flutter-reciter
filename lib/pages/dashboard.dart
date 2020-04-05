@@ -12,7 +12,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text("Dashboard", style: TextStyle(fontSize: 24),),
+        title: Text("Reciter", style: TextStyle(fontSize: 24),),
       ),
       body: Container(
         decoration: BoxDecoration(
