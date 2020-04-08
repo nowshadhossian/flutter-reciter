@@ -1,5 +1,9 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:firebase_admob/firebase_admob.dart';
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/widget/CharacterButton.dart';
 
@@ -58,7 +62,7 @@ class _BanglaState extends State<Bangla> {
     new Character("হ", "	হাত"),
     new Character("ড়", "	পাহাড়"),
     new Character("ঢ়", "	আষাঢ়"),
-    new Character("য়", "	য়াংজে নদী"),
+    new Character("য়", "রায়"),
     new Character("ৎ", "	উৎস"),
     new Character("ং", "	এবং"),
     new Character("ঃ", "	দুঃখ"),
@@ -92,6 +96,50 @@ class _BanglaState extends State<Bangla> {
     );
     list.add(SizedBox(height: 20));
     return new Column(children: list);
+  }
+
+  BannerAd myBanner;
+
+  initAdmob(BuildContext context){
+    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    //Change appId With Admob Id
+    myBanner = createBanner()
+      ..load()
+      ..show();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((_) => initAdmob(context));
+  }
+
+  @override
+  void dispose() {
+    myBanner.dispose();
+    super.dispose();
+  }
+
+  createBanner(){
+    MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+      keywords: <String>['flutterio', 'beautiful apps'],
+      contentUrl: 'https://flutter.io',
+      childDirected: true,
+      testDevices: <String>[], // Android emulators are considered test devices
+    );
+
+    myBanner = BannerAd(
+      // Replace the testAdUnitId with an ad unit id from the AdMob dash.
+      // https://developers.google.com/admob/android/test-ads
+      // https://developers.google.com/admob/ios/test-ads
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.smartBanner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("BannerAd event is $event");
+      },
+    );
+    return myBanner;
   }
 
   @override
@@ -134,7 +182,7 @@ class _BanglaState extends State<Bangla> {
                     ),
                     SizedBox(height: 40),
                   ],
-                )
+                ),
             ]),
           ),
         ));

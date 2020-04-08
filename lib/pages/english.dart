@@ -1,4 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/models/Character.dart';
@@ -39,6 +40,47 @@ class _EnglishState extends State<English> {
     new Character("Z", "Zebra"),
 
   ];
+
+  BannerAd myBanner;
+
+  @override
+  void initState() {
+    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    //Change appId With Admob Id
+    myBanner = createBanner()
+      ..load()
+      ..show();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    myBanner.dispose();
+
+    super.dispose();
+  }
+
+  createBanner(){
+    MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+      keywords: <String>['flutterio', 'beautiful apps'],
+      contentUrl: 'https://flutter.io',
+      childDirected: true,
+      testDevices: <String>[], // Android emulators are considered test devices
+    );
+
+    myBanner = BannerAd(
+      // Replace the testAdUnitId with an ad unit id from the AdMob dash.
+      // https://developers.google.com/admob/android/test-ads
+      // https://developers.google.com/admob/ios/test-ads
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.smartBanner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("BannerAd event is $event");
+      },
+    );
+    return myBanner;
+  }
 
   playLocal(fileName) {
     final assetsAudioPlayer = AssetsAudioPlayer();
