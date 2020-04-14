@@ -1,9 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:firebase_admob/firebase_admob.dart';
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/widget/CharacterButton.dart';
 
@@ -98,7 +94,8 @@ class _BanglaState extends State<Bangla> {
     return new Column(children: list);
   }
 
-  BannerAd myBanner;
+  /* Enable banner for next realease
+   BannerAd myBanner;
 
   initAdmob(BuildContext context){
     FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
@@ -141,6 +138,8 @@ class _BanglaState extends State<Bangla> {
     );
     return myBanner;
   }
+
+   */
 
   @override
   Widget build(BuildContext context) {

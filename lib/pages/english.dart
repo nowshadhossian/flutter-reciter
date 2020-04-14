@@ -1,7 +1,5 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
-import 'package:reciter/models/Character.dart';
 import 'package:reciter/models/Character.dart';
 import 'package:reciter/widget/CharacterButton.dart';
 
@@ -41,7 +39,8 @@ class _EnglishState extends State<English> {
 
   ];
 
-  BannerAd myBanner;
+ /* banner for next release
+ BannerAd myBanner;
 
   @override
   void initState() {
@@ -80,7 +79,7 @@ class _EnglishState extends State<English> {
       },
     );
     return myBanner;
-  }
+  }*/
 
   playLocal(fileName) {
     final assetsAudioPlayer = AssetsAudioPlayer();
