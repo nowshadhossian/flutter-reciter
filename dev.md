@@ -10,4 +10,4 @@ flutter build apk
 3
 to build for production
 flutter build not increase version number
-flutter build appbundle --build-name=1.0.2 --build-number=2
+flutter build appbundle --build-name=1.0.6 --build-number=6

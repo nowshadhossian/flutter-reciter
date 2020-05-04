@@ -4,8 +4,10 @@ class CharacterButton extends StatelessWidget {
   final String A;
   final String B;
   final VoidCallback onClick;
+  double titleFontSize;
 
   CharacterButton(this.A, this.B, this.onClick);
+  CharacterButton.withTitleFont(this.A, this.B, this.onClick, this.titleFontSize);
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,10 @@ class CharacterButton extends StatelessWidget {
           ),
           icon: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text(A, style: TextStyle(fontSize: 55)),
+              Text(A, style: TextStyle(fontSize: (titleFontSize != null && titleFontSize > 0) ? titleFontSize : 45)),
               Text(B, style: TextStyle(fontSize: 25)),
             ],
           ),

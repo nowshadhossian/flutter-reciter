@@ -23,36 +23,39 @@ class _DashboardState extends State<Dashboard> {
 
           ),
         ),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 90),
-            Center(
-              child: Text(
-                "Choose One:",
-                style: TextStyle(fontSize: 39, color: Colors.black, fontWeight: FontWeight.bold),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 90),
+              Center(
+                child: Text(
+                  "Choose One:",
+                  style: TextStyle(fontSize: 39, color: Colors.black, fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CharacterButton("٣", "Arabic", () {
-                  print("Arabic press");
-                  Navigator.pushNamed(context, "/arabic");
-                }),
-                SizedBox(width: 35),
-                CharacterButton("আ", "Bangla", () {
-                  print("Bangla press");
-                  Navigator.pushNamed(context, "/bangla");
-                }),
-              ],
-            ),
-            SizedBox(height: 20),
-            CharacterButton("A", "English", () {
-              print("Bangla press");
-              Navigator.pushNamed(context, "/english");
-            }),
-          ],
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CharacterButton.withTitleFont("٣", "Arabic", () {
+                    print("Arabic press");
+                    Navigator.pushNamed(context, "/arabic");
+                  }, 30),
+                  SizedBox(width: 35),
+                  CharacterButton("আ", "Bangla", () {
+                    print("Bangla press");
+                    Navigator.pushNamed(context, "/bangla");
+                  }),
+                ],
+              ),
+              SizedBox(height: 20),
+              CharacterButton("A", "English", () {
+                print("Bangla press");
+                Navigator.pushNamed(context, "/english");
+              }),
+            ],
+          ),
         ),
       ),
     );

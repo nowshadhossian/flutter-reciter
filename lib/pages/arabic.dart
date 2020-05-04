@@ -106,14 +106,14 @@ class _ArabicState extends State<Arabic> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CharacterButton(characters[i].character, characters[i].description, () {
+                        CharacterButton.withTitleFont(characters[i].character, characters[i].description, () {
                           playLocal(i.toString() + ".mp3");
-                        }),
+                        }, 30),
                         SizedBox(width: 35),
                         if ((i + 1) < characters.length)
-                          CharacterButton(characters[i + 1].character, characters[i+1].description, () {
+                          CharacterButton.withTitleFont(characters[i + 1].character, characters[i+1].description, () {
                             playLocal((i+1).toString() + ".mp3");
-                          }),
+                          }, 30),
                       ],
                     ),
                     SizedBox(height: 40),
